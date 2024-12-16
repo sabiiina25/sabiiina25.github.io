@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send a Love Letter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6e6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #e60073;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea {
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e60073;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #cc005f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Send a Love Letter</h1>
+        <form id="loveLetterForm">
+            <label for="recipientEmail">Recipient's Email:</label>
+            <input type="email" id="recipientEmail" placeholder="Enter recipient's email" required>
+
+            <label for="senderName">Your Name (Optional):</label>
+            <input type="text" id="senderName" placeholder="Enter your name">
+
+            <label for="loveLetter">Your Love Letter:</label>
+            <textarea id="loveLetter" placeholder="Write your love letter here..." required></textarea>
+
+            <button type="button" onclick="sendLoveLetter()">Send Letter</button>
+        </form>
+    </div>
+
+    <script>
+        function sendLoveLetter() {
+            const recipientEmail = document.getElementById('recipientEmail').value;
+            const senderName = document.getElementById('senderName').value;
+            const loveLetter = document.getElementById('loveLetter').value;
+
+            if (!recipientEmail || !loveLetter) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const subject = A Love Letter Just for You!;
+            const body = ${loveLetter}%0A%0A- ${senderName || 'Your Secret Admirer'};
+            
+            window.location.href = mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)};
+        }
+    </script>
+</body>
+</html>
